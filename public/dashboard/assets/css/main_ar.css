@@ -1,0 +1,35 @@
+body {
+    font-family: "Cairo", sans-serif;
+    /* font-optical-sizing: auto; */
+    font-weight: 600;
+    font-style: normal;
+}
+
+.container-fluid.d-flex.align-items-stretch.justify-content-between,
+div#kt_aside_logo,
+div#kt_toolbar,
+div#kt_footer,
+.aside-menu.flex-column-fluid,
+.card-header.border-0.pt-5,
+.card-body {
+    direction: rtl !important;
+}
+
+#datatable_form_filter .row {
+    /* flex-direction: row-reverse; */
+    text-align: start;
+}
+
+::placeholder {
+    text-align: right;
+}
+
+.papers .addmore i {
+    transform: translate(50%, -50%) !important;
+}
+
+/* .select2-container--open .select2-dropdown {
+    right: -318px !important;
+} */
+.select2-container--open .select2-dropdown { transform: translate(100%, 0); }
+

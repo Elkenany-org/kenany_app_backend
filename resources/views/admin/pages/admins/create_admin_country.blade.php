@@ -102,18 +102,25 @@
                                                 </span>
                                                 @enderror
                                             </div>
-
+                                            <input type="hidden" name="role" value="admin" />
                                             <div class="col-lg-6 col-12 mt-5">
-                                                <label class="fs-5 fw-bold form-label mb-2">{{ TranslationHelper::translate('role' , 'admin') }} :</label>
+                                                <label class="fs-5 fw-bold form-label mb-2">{{ TranslationHelper::translate('country' , 'admin') }} :</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <select name="role" class="form-control form-control-solid" id="role" style="width: 100%" data-placeholder="{{ TranslationHelper::translate('role' , 'admin') }}" >
+                                                <select name="country_id" class="form-control form-control-solid" id="" style="width: 100%" data-placeholder="{{ TranslationHelper::translate('role' , 'admin') }}" >
                                                     <option value="">---</option>
-                                                    @foreach ($roles as $role)
-                                                        @if($role->name == 'admin')
-                                                            <option value="{{ $role->name }}" {{ in_array($role->id  , $admin->roles->pluck('id')->toArray() )  ? 'selected' : ''}}>{{ $role->name }}</option>
-                                                        @endif
-                                                    @endforeach
+                                                    <option value="1">
+                                                        مصر
+                                                        {{-- <img src="{{ asset('dashboard/assets/media/flags/egypt.svg') }}" style="width: 30px;height:30px ;margin: auto 5px" alt="">   --}}
+                                                    </option>
+                                                    <option value="2">
+                                                        السعودية
+                                                        {{-- <img src="{{ asset('dashboard/assets/media/flags/saudi-arabia.svg') }}" style="width: 30px;height:30px ;margin: auto 5px" alt="">   --}}
+                                                    </option>
+                                                    <option value="3">
+                                                        الامارات
+                                                        {{-- <img src="{{ asset('dashboard/assets/media/flags/united-arab-emirates.svg') }}" style="width: 30px;height:30px ;margin: auto 5px" alt="">   --}}
+                                                    </option> 
                                                 </select>
                                                 @error('type')
                                                 <span class="text-danger" role="alert">

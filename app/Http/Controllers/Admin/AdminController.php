@@ -34,7 +34,7 @@ class AdminController extends Controller
     {
         return view('admin.pages.admins.form', new AdminViewModel());
     }
-    
+     
     public function store(AdminStoreRequest $request)
     {
         $admin = Admin::create(Arr::except($request->validated() , 'image') + [ 'country_id' => auth('admin')->user()->country_id ]);

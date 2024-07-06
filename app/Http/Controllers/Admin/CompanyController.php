@@ -48,7 +48,7 @@ class CompanyController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     */
+    */
     public function store(CategoryStoreRequest $request) 
     {
         $this->categoryService->store($request->validated());
@@ -57,15 +57,15 @@ class CompanyController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     */
-    public function edit(Category $category) : View
+    */
+    public function edit(Company $company) : View
     {
-        return view('admin.pages.categories.form' , new CategoryViewModel($category));
+        return view('admin.pages.companies.form' , new CompanyViewModel($company));
     }
 
     /**
      * Update the specified resource in storage.
-     */
+    */
     public function update(CategoryUpdateRequest $request, Category $category)
     {
         $this->categoryService->update($category , $request->validated());
@@ -74,7 +74,7 @@ class CompanyController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     */
+    */
     public function destroy(Category $category) 
     {
         $this->categoryService->delete($category);

@@ -37,7 +37,8 @@ class AdminController extends Controller
      
     public function store(AdminStoreRequest $request)
     {
-        $admin = Admin::create(Arr::except($request->validated() , 'image') + [ 'country_id' => auth('admin')->user()->country_id ]);
+        $admin = Admin::create(Arr::except($request->validated() , 'image') +
+         [ 'country_id' => $request->has('country_id') ? $request->country_id : auth('admin')->user()->country_id ]);
         if(isset($data['image'])){
             $admin->storeFile($data['image']);
         }

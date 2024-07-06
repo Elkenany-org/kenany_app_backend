@@ -3,17 +3,20 @@
 namespace App\Models;
 
 use App\ModelFilters\CompanyFilter;
+use App\Traits\HandleUploadFile;
 use EloquentFilter\Filterable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Translatable\HasTranslations;
 
 
-class Company extends Model 
+class Company extends Model implements HasMedia 
 {
-    use HasFactory , HasTranslations , SoftDeletes , Filterable ;
+    use HasFactory , HasTranslations , InteractsWithMedia , HandleUploadFile , SoftDeletes , Filterable;
     protected $guarded = [];
     protected $table = 'companies';
     public $translatable = ['name','address','short_desc'];

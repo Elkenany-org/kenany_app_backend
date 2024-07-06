@@ -1,11 +1,11 @@
 @extends('admin.layouts.app')
 
 @section('crumb')
-<x-bread-crumb :breadcrumbs="[
+    <x-bread-crumb :breadcrumbs="[
             ['text'=> TranslationHelper::translate('admins' , 'admin') ,'link'=>route('admin.admin.index')],
             ['text'=> TranslationHelper::translate( Str::replace(' ' , '_', Str::lower(getLastKeyRoute(request()->route()->getName()))) , 'admin')]
             ]" :button="['text'=> TranslationHelper::translate('go_to_admins' , 'admin') ,'link'=>route('admin.admin.index')]" :permission="auth('admin')->user()->can('admins.read')">
-</x-bread-crumb>
+    </x-bread-crumb>
 @endsection
 
 @section('content')
@@ -110,7 +110,9 @@
                                                 <select name="role" class="form-control form-control-solid" id="role" style="width: 100%" data-placeholder="{{ TranslationHelper::translate('role' , 'admin') }}" >
                                                     <option value="">---</option>
                                                     @foreach ($roles as $role)
-                                                    <option value="{{ $role->name }}" {{ in_array($role->id  , $admin->roles->pluck('id')->toArray() )  ? 'selected' : ''}}>{{ $role->name }}</option>
+                                                        @if( $role->name  != 'admin_country')
+                                                            <option value="{{ $role->name }}" {{ in_array($role->id  , $admin->roles->pluck('id')->toArray() )  ? 'selected' : ''}}>{{ $role->name }}</option>
+                                                        @endif
                                                     @endforeach
                                                 </select>
                                                 @error('type')

@@ -3,14 +3,16 @@
 namespace App\ViewModels;
 
 use App\Models\Company;
+use App\Models\GuideSection;
 use Spatie\ViewModels\ViewModel;
 
 class CompanyViewModel extends ViewModel
 {
-     
+    public $guideSections;
     public function __construct(public ?Company $company = null)
     {
         $this->company = is_null($company) ? new Company(old()) : $company;
+        $this->guideSections = GuideSection::get();
     }
 
     public function action(): string
